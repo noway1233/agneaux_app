@@ -7,18 +7,8 @@ workflows:
 
     scripts:
       - flutter pub get
-      - flutter build ios --release --no-codesign
-
-      - 'echo Searching for .app...'
-      - 'find . -name "*.app"'
-
-      - mkdir -p build/ios/ipa
-
-      - 'APP_PATH=$(find . -name "*.app" | head -n 1)'
-      - 'echo App found at $APP_PATH'
-
-      - 'cd "$(dirname "$APP_PATH")"'
-      - 'zip -r ../../../build/ios/ipa/app.ipa "$(basename "$APP_PATH")"'
+      - flutter build ipa --release --no-codesign
+      - ls build/ios/ipa
 
     artifacts:
       - build/ios/ipa/*.ipa
