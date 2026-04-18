@@ -9,11 +9,14 @@ workflows:
       - flutter pub get
       - flutter build ios --release --no-codesign
 
-      - xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -archivePath build/Runner.xcarchive archive CODE_SIGNING_ALLOWED=NO
-
       - mkdir -p build/ios/ipa
 
-      - xcodebuild -exportArchive -archivePath build/Runner.xcarchive -exportPath build/ios/ipa -exportOptionsPlist ios/ExportOptions.plist || echo "Export failed, but continuing"
+      # Trouver le .app généré
+      - APP_PATH=$(find build/ios/iphoneos -name "*.app" | head -n 1)
+
+      # Créer le .ipa
+      - cd $(dirname "$APP_PATH")
+      - zip -r ../../ipa/app.ipa $(basename "$APP_PATH")
 
     artifacts:
       - build/ios/ipa/*.ipa
