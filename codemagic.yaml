@@ -6,6 +6,9 @@ workflows:
       xcode: latest
     scripts:
       - flutter pub get
-      - flutter build ipa --release
+      - flutter build ios --release --no-codesign
+      - mkdir -p build/ios/ipa
+      - cd build/ios/iphoneos
+      - zip -r ../ipa/app.ipa Runner.app
     artifacts:
       - build/ios/ipa/*.ipa
