@@ -1,0 +1,18 @@
+Taux de prolificité = total agneau / total brebis ayant mis bas
+Taux de mortalité = total mort / total agneau
+
+Ajouter une page qui permet de retrouver l'agneau en fonction de sa boucle + inclure poids vente et acheteur (liste déroulate : Marché, Javy, Particulier, ND), date vente lorsque le poids et l'acheteur est renseingné.
+
+
+
+input_agneau ne vide pas la saisie lorsque l'utilisateur clique sur enregistrer
+Les données ne s'affichent pas avec l'ancienne saisie enregistrée. Est-ce qu'elles ne s'enregistrent pas ou elles ne s'affichent pas
+
+Si la saisie est vide, eviter de pouvoir enregistrer.
+Possible d'avoir un bouton qui permet de vider les saisies et de placer de curseur sur la zone de saisie automatiquement ?
+
+noter en dessous le zip la corespondance de la boucle
+
+basculer la brebis au bout d'un mois apres validation sortie du troupeau -> tari
+
+1 fois par an echogar
