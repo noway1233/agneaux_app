@@ -4,11 +4,25 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
+
     scripts:
       - flutter pub get
       - flutter build ios --release --no-codesign
+
+      - xcodebuild -workspace ios/Runner.xcworkspace \
+          -scheme Runner \
+          -configuration Release \
+          -sdk iphoneos \
+          -archivePath build/Runner.xcarchive \
+          archive \
+          CODE_SIGNING_ALLOWED=NO
+
       - mkdir -p build/ios/ipa
-      - cd build/ios/iphoneos
-      - zip -r ../ipa/app.ipa Runner.app
+
+      - xcodebuild -exportArchive \
+          -archivePath build/Runner.xcarchive \
+          -exportPath build/ios/ipa \
+          -exportOptionsPlist ios/ExportOptions.plist
+
     artifacts:
       - build/ios/ipa/*.ipa
